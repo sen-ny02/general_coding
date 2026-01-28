@@ -1,21 +1,19 @@
-with open("books.txt", "r") as fuck_this_shit:
-    for line in fuck_this_shit:
-        line = line.strip()
 
-        if not line:
-            continue
+def customer_read():
+    with open("books.txt", "r") as fuck_this_shit:
+        for line in fuck_this_shit:
+            line = line.strip()
 
-        parts = line.split(",")
+            if not line:
+                continue
 
-        if len(parts) != 3:
-            print("Invalid line: ", line)
-            continue
+            parts = line.split(",")
 
-        title, author, isbn = parts
-        print(title, author, isbn)
+            if len(parts) != 3:
+                print("Invalid line: ", line)
+                continue
 
-print(title)
-print()
-print(author)
-print()
-print(isbn)
+            title, author, isbn = parts
+            print(title, author, isbn)
+
+customer_read()
