@@ -1,27 +1,17 @@
 '''
+Class Construction: Write the Book class. Ensure you have a constructor (__init__) and a method to display the book's details nicely (e.g., toString() or __str__).
 
-1. File Input: Automatically read book data from a text file named books.txt upon startup - done
+Class construction: Write the ProjectLibrarian class that holds the Main method, the menu and the other associated methods.
 
-2. Object Storage: Store the data as Book objects in a list/array (not just strings).
+File Reading: Write a function loadBooks() that reads books.txt.
 
-3. Search: Allow the user to find a book by entering its title.
+    Tip: Watch out for the "newline" character (\n) at the end of lines!
 
-4. State Change: Allow a user to "check out" a book, changing its status from "Available" to "Checked Out".
+Main Loop: Create a menu system (using a while loop) that asks the user to:
 
+    [1] List all books.
+    [2] Search for and check out a book.
+    [3] Exit.
+
+Text file: Create the text file for the project. See above for the contents. 
 '''
-
-
-#find num of lines dickead
-with open("books.txt", 'r') as fp:
-    sum_lines = sum(1 for line in fp)
-    # print('Total Number of lines:', sum_lines)
-
-#iterates through each line - testing phase
-for idx in range(sum_lines): 
-    printline = idx
-    lineCounter = 0
-    with open('books.txt','r') as f:
-        for line in f:
-            lineCounter += 1
-            if lineCounter == printline:
-                print(line, end='')
