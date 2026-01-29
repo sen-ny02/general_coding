@@ -15,4 +15,4 @@ lines = lines.strip()
 print(lines)
 
 for line in file:
-    print(lines)
+    print(lines[line])
