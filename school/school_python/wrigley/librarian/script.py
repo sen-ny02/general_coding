@@ -15,13 +15,42 @@ Main Loop: Create a menu system (using a while loop) that asks the user to:
 
 Text file: Create the text file for the project. See above for the contents. 
 '''
+def get_info():
+    with open("books.txt", "r") as f:
+        #removes unnecesary shit
+        for line in f:
+            line = line.strip()
+
+            #skips if no line so no dumbass error
+            if not line:
+                continue
+
+            #splits parts with the comma as splitter
+            parts = line.split(",")
+
+            #ez error handling
+            if len(parts) != 3:
+                print("Invalid line: ", line)
+                continue
+
+            #assigns parts to shit
+            title, author, isbn = parts
 
 class Book:
-    def __init__(self, author, title, isbn, isAvailable):
+    def __init__(self, title, author, isbn):
         self.__author = author
         self.__title = title
         self.__isbn = isbn
-        self.__isAvailable = isAvailable
+        self.__isAvailable = True #default state
+
+    
+
+    def check_out(self):
+        if self.isAvailable:
+            self.isAvailable = False
+            return True
+        else:
+            return False
     
     def to_string(self):
         if self.__isAvailable == True:
@@ -29,19 +58,12 @@ class Book:
         else:
             print(f"Book: {self.__title}\nAuthor: {self.__author}\nISBN: {self.__isbn}\nAvailabile: No")
 
-def menu():
-    print(f"What option would you like to do?:\n[1] List all books\n[2] Search for and checkout a book\n[3] Exit program")
-    menu_select = int(input("Choose an option 1-3: "))
 
-    exit = None
-    if menu_select == 1 or menu_select == 2:
-        exit == False
-    elif menu_select == 3:
-        exit == True
-    return exit
+library_list = []
+file = open("books.txt", "r")
+for line in file:
+    title, author, isbn = get_info()
+    new_book = Book(title,author,isbn)
+    library_list.append(new_book)
 
-display_menu = menu()
-if display_menu == True:
-    print("Yes")
-else:
-    print("No")
+print(library_list)

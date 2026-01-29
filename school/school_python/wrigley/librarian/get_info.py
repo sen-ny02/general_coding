@@ -1,5 +1,5 @@
 
-def customer_read():
+def get_info():
     with open("books.txt", "r") as f:
         #removes unnecesary shit
         for line in f:
@@ -19,6 +19,3 @@ def customer_read():
 
             #assigns parts to shit
             title, author, isbn = parts
-            print(title, author, isbn)
-
-customer_read()
