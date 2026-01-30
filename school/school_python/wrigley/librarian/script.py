@@ -16,6 +16,7 @@ Main Loop: Create a menu system (using a while loop) that asks the user to:
 Text file: Create the text file for the project. See above for the contents. 
 '''
 def get_info():
+    books = []
     with open("books.txt", "r") as f:
         #removes unnecesary shit
         for line in f:
@@ -35,6 +36,9 @@ def get_info():
 
             #assigns parts to shit
             title, author, isbn = parts
+            books.append((title, author, isbn))
+    
+    return books
 
 class Book:
     def __init__(self, title, author, isbn):
@@ -46,8 +50,8 @@ class Book:
     
 
     def check_out(self):
-        if self.isAvailable:
-            self.isAvailable = False
+        if self.__isAvailable:
+            self.__isAvailable = False
             return True
         else:
             return False
@@ -60,10 +64,9 @@ class Book:
 
 
 library_list = []
-file = open("books.txt", "r")
-for line in file:
-    title, author, isbn = get_info()
-    new_book = Book(title,author,isbn)
+books = get_info()
+for title, author, isbn in books:
+    new_book = Book(title, author, isbn)
     library_list.append(new_book)
 
 print(library_list)
