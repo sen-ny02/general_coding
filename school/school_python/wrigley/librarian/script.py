@@ -58,9 +58,12 @@ class Book:
     
     def to_string(self):
         if self.__isAvailable == True:
-            print(f"Book: {self.__title}\nAuthor: {self.__author}\nISBN: {self.__isbn}\nAvailabile: Yes")
+            return f"Book: {self.__title}\nAuthor: {self.__author}\nISBN: {self.__isbn}\nAvailabile: Yes"
         else:
-            print(f"Book: {self.__title}\nAuthor: {self.__author}\nISBN: {self.__isbn}\nAvailabile: No")
+            return f"Book: {self.__title}\nAuthor: {self.__author}\nISBN: {self.__isbn}\nAvailabile: No"
+    
+    def __str__(self):
+        return self.to_string()
 
 
 library_list = []
@@ -69,4 +72,6 @@ for title, author, isbn in books:
     new_book = Book(title, author, isbn)
     library_list.append(new_book)
 
-print(library_list)
+for book in library_list:
+    print(book)
+    print()
