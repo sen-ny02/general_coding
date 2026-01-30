@@ -64,6 +64,20 @@ class Book:
     
     def __str__(self):
         return self.to_string()
+    
+    def search(self, search_term):
+        with open("books.txt", "r") as f:
+            for line in f:
+                line = line.strip()
+                if not line:
+                    continue
+                parts = line.split(",")
+                if len(parts) != 3:
+                    continue
+                title, author, isbn = parts
+                if search_term.lower() in title.lower() or search_term.lower() in author.lower() or search_term.lower() in isbn.lower():
+                    return True
+        return False
 
 
 library_list = []
